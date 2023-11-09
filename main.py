@@ -13,19 +13,23 @@ import os
 import time
 from config import PATH
 
+
 def generate_key():
     key = Fernet.generate_key()
     with open(PATH+"key.key", "wb") as key_file:
         key_file.write(key)
 
+
 def load_key():
     return open(PATH+"key.key", "rb").read()
+
 
 def data_encode(data):
     data = data.encode()
     key = load_key()
     f = Fernet(key)
     return f.encrypt(data)
+
 
 def data_decode(file):
     key = load_key()
@@ -34,6 +38,7 @@ def data_decode(file):
         data = encrypt_data.read()
     decrypted_data = f.decrypt(data)
     return decrypted_data.decode()
+
 
 def new_profile(user_name):
     print("Vamos a crear un nuevo usuario: ")
@@ -61,3 +66,12 @@ def new_profile(user_name):
         else:
             print("Lo siento, la contraseña no coincide.")
             continue
+
+
+def install():
+    os.mkdir(f"{PATH}data")
+    os.mkdir(f"{PATH}users")
+    os.mkdir(f"{PATH}sites")
+    with open(f"{PATH}build.txt", "w") as version:
+        version.write("Password Manager v0.0.0")
+
