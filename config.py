@@ -1,1 +1,3 @@
-PATH = "C:/Program Files"
+name = "jpast"
+
+PATH = f"C:/Users/{name}/Password Manager/"
