@@ -107,4 +107,4 @@ def install():
     time.sleep(2)
     print("Instalación completada.")
 
-install()
+new_profile("joan")
