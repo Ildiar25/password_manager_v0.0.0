@@ -19,12 +19,12 @@ name = "jpast"  # Wait! This name must be the same name used by computer user
 
 def generate_key():
     key = Fernet.generate_key()
-    with open(PATH+"key.key", "wb") as key_file:
+    with open(PATH+"\\key.key", "wb") as key_file:
         key_file.write(key)
 
 
 def load_key():
-    return open(PATH+"key.key", "rb").read()
+    return open(PATH+"\\key.key", "rb").read()
 
 
 def data_encode(data):
@@ -47,7 +47,7 @@ def new_profile(user_name):
     print("Vamos a crear un nuevo usuario: ")
     time.sleep(0.2)
 
-    open(f"{PATH}{user_name}_DATA.txt", "wb").close()
+    open(f"{PATH}\\user\\{user_name}_data.txt", "wb").close()
 
     user = input("Nombre de Usuario: ")
     password_01 = input("Contraseña: ")
@@ -59,9 +59,12 @@ def new_profile(user_name):
             print("Contraseña confirmada")
             time.sleep(0.2)
 
+            with open(f"{PATH}\\files\\user_list.txt", "a") as data:
+                data.write(user.upper() + "|")
+
             user_encrypt = data_encode(user + "|" + password_01)
 
-            with open(f"{PATH}{user_name}_DATA.txt", "ab") as data:
+            with open(f"{PATH}\\user\\{user_name}_data.txt", "ab") as data:
                 data.write(user_encrypt)
 
             login(user_name)
@@ -94,6 +97,8 @@ def install():
     os.mkdir(main_path + "\\files")
 
     time.sleep(0.2)
+    generate_key()
+
     open(main_path + "\\files\\user_list.txt", "w").close()
 
     with open(main_path + "\\build.txt", "w") as build_version:
@@ -101,3 +106,5 @@ def install():
 
     time.sleep(2)
     print("Instalación completada.")
+
+install()

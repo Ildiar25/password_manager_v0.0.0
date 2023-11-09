@@ -1,4 +1,4 @@
-temp_path = "C:/Users/jpast/Desktop/temp_folder/"
+temp_path = "C:\\Users\\jpast\\Password Manager"
 
 BUILD = "v0.0.0"
 
