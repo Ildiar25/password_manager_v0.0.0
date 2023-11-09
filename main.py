@@ -17,8 +17,17 @@ from config import PATH
 
 ####################### ------------------------------ FUNCTIONS ------------------------------ #######################
 
+# START FUNCTIONS ----
+
+# CODING FUNCTIONS ----
 
 def generate_key():
     key = Fernet.generate_key()
     with open(PATH + "key.key", "wb") as key_file:
         key_file.write(key)
+
+
+def load_key():
+    return open(PATH + "key.key", "rb").read()
+
+######################## ------------------------------ PROGRAM ------------------------------ ########################
