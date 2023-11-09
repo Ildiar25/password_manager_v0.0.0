@@ -1,3 +1,3 @@
-name = "jpast"
+NAME = "jpast"
 
-PATH = f"C:/Users/{name}/Password Manager/"
+PATH = f"C:/Users/{NAME}/Password Manager/"
