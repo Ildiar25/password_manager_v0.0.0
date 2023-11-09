@@ -12,6 +12,9 @@ from cryptography.fernet import Fernet
 import os
 import time
 from config import PATH
+from config import BUILD
+
+name = "jpast"  # Wait! This name must be the same name used by computer user
 
 
 def generate_key():
@@ -61,15 +64,40 @@ def new_profile(user_name):
             with open(f"{PATH}{user_name}_DATA.txt", "ab") as data:
                 data.write(user_encrypt)
 
+            login(user_name)
+
             break
         else:
             print("Lo siento, la contraseña no coincide.")
             continue
 
 
+def login(user_name):
+    pass
+
+
 def install():
-    os.mkdir(f"{PATH}data")
-    os.mkdir(f"{PATH}users")
-    os.mkdir(f"{PATH}sites")
-    with open(f"{PATH}build.txt", "w") as version:
-        version.write("Password Manager v0.0.0")
+    print("Instalando...")
+    actual_path = os.path.dirname(__file__)
+    sep = actual_path.split("\\")
+
+    main_folder = sep[0] + f"\\Users\\{name}"
+    os.mkdir(main_folder + "\\Password Manager")
+
+    main_path = main_folder + "\\Password Manager"
+
+    time.sleep(2)
+    print("Creando subcarpetas...")
+
+    os.mkdir(main_path + "\\user")
+    os.mkdir(main_path + "\\data")
+    os.mkdir(main_path + "\\files")
+
+    time.sleep(0.2)
+    open(main_path + "\\files\\user_list.txt", "w").close()
+
+    with open(main_path + "\\build.txt", "w") as build_version:
+        build_version.write(f"Password Manager {BUILD}")
+
+    time.sleep(2)
+    print("Instalación completada.")
