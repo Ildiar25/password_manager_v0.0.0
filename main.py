@@ -56,8 +56,7 @@ def new_profile(user_name):
             print("Contraseña confirmada")
             time.sleep(0.2)
 
-            user_data = user + "|" + password_01
-            user_encrypt = data_encode(user_data)
+            user_encrypt = data_encode(user + "|" + password_01)
 
             with open(f"{PATH}{user_name}_DATA.txt", "ab") as data:
                 data.write(user_encrypt)
@@ -74,4 +73,3 @@ def install():
     os.mkdir(f"{PATH}sites")
     with open(f"{PATH}build.txt", "w") as version:
         version.write("Password Manager v0.0.0")
-
