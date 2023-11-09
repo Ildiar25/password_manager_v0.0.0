@@ -8,10 +8,12 @@
 
 ########################################################################################################################
 
-from cryptography.fernet import Fernet
 import os
+import time
+from cryptography.fernet import Fernet
 from config import PATH
 from config import NAME
+from config import BUILD
 
 ####################### ------------------------------ VARIABLES ------------------------------ #######################
 
@@ -20,6 +22,34 @@ content = os.listdir(f"C:/Users/{NAME}/")
 ####################### ------------------------------ FUNCTIONS ------------------------------ #######################
 
 # START FUNCTIONS ----
+
+
+def install():
+    main_folder = f"C:/Users/{NAME}/"
+    print("Instalando...")
+
+    os.mkdir(main_folder + "Password Manager")
+
+    main_path = main_folder + "Password Manager/"
+
+    time.sleep(2)
+    print("Creando subcarpetas...")
+
+    os.mkdir(main_path + "user")
+    os.mkdir(main_path + "data")
+    os.mkdir(main_path + "files")
+
+    time.sleep(0.2)
+    generate_key()
+
+    open(main_path + "files/user_list.txt", "w").close()
+
+    with open(main_path + "/build.txt", "w") as build_version:
+        build_version.write(f"Password Manager {BUILD}")
+
+    time.sleep(2)
+    print("Instalación completada.")
+
 
 # CODING FUNCTIONS ----
 
@@ -59,6 +89,6 @@ def data_decode(file):
 
 
 if "Password Manager" not in content:
-    pass  # call to install function
+    install()
 else:
     pass  # call to check function
