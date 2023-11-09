@@ -8,5 +8,21 @@
 
 ########################################################################################################################
 
+import time
 import cryptography
 import os
+from config import PATH
+import stdiomask
+
+
+def new_profile():
+    print("Vamosa  crear un nuevo usuario y una contraseña:")
+    time.sleep(0.2)
+
+    user = input("Nombre de Usuario: ")
+    print("Usuario añadido")
+    password_01 = stdiomask.getpass("Contraseña: ", "*")
+
+    print(user, password_01)
+
+new_profile()
