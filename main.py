@@ -8,5 +8,11 @@
 
 ########################################################################################################################
 
-import cryptography
+from cryptography.fernet import Fernet
 import os
+from config import PATH
+
+def generate_key():
+    key = Fernet.generate_key()
+    with open(PATH+"key.key", "wb") as key_file:
+        key_file.write(key)
