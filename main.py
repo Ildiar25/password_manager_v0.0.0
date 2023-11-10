@@ -93,6 +93,7 @@ def login(user_name):
 
         if user == u_data[0] and password == u_data[1]:
             print("Bienvenido de nuevo!")
+            break
 
         elif count == 0:
             print("Demasiados intentos, se cerrará el programa.")
