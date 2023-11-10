@@ -101,7 +101,7 @@ def login(user_name):
             quit()
 
         else:
-            print("Usuario o contraseña no coinciden. Vuelva a interntarlo.")
+            print("Usuario o contraseña no coinciden. Vuelva a intentarlo.")
             count -= 1
             continue
 
@@ -204,6 +204,3 @@ def uninstall():
         else:
             print(f"Lo siento, {answer} no es un comando válido.")
             continue
-
-
-uninstall()
