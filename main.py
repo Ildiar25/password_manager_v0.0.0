@@ -70,13 +70,39 @@ def new_profile(user_name):
             login(user_name)
 
             break
+
         else:
             print("Lo siento, la contraseña no coincide.")
             continue
 
 
 def login(user_name):
-    pass
+    print(f"Bienvenido {user_name}")
+    load_user = f"{PATH}Password Manager/user/{user_name}_data.txt"
+    u_data = data_decode(load_user)
+
+    count = 2
+
+    u_data = u_data.split("|")
+
+    time.sleep(2)
+
+    while True:
+        user = input("Usuario: ")
+        password = input("Contraseña: ")
+
+        if user == u_data[0] and password == u_data[1]:
+            print("Bienvenido de nuevo!")
+
+        elif count == 0:
+            print("Demasiados intentos, se cerrará el programa.")
+            time.sleep(2)
+            quit()
+
+        else:
+            print("Usuario o contraseña no coinciden. Vuelva a interntarlo.")
+            count -= 1
+            continue
 
 
 def install():
@@ -105,4 +131,5 @@ def install():
     time.sleep(2)
     print("Instalación completada.")
 
-new_profile("joan")
+
+login("joan")
