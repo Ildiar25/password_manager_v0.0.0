@@ -21,7 +21,7 @@ content = os.listdir(f"C:/Users/{NAME}/")
 
 ####################### ------------------------------ FUNCTIONS ------------------------------ #######################
 
-# START FUNCTIONS ----
+# SISTEM FUNCTIONS ----
 
 
 def install():
@@ -85,10 +85,40 @@ def data_decode(file):
 
     return decrypted_data.decode()
 
+
+# START FUNCTIONS ----
+
+
+def check_list(name):
+    with open(PATH + "Password Manager/files/user_list.txt", "r") as user_list:
+        u_list = user_list.read()
+        u_list = u_list.split("|")
+
+    if name in u_list:
+
+        # call login function
+
+    else:
+        print(f"Parece que es su primera vez. No hay problema")
+        # call new_profile function
+
 ######################## ------------------------------ PROGRAM ------------------------------ ########################
 
+
+print("BIENVENIDO A PASSWORD MANAGER v0.0.0")
+print("Realizando las comprobaciones necesarias...")
+
+time.sleep(2)
 
 if "Password Manager" not in content:
     install()
 else:
-    pass  # call to check function
+    print("Parece tiene todo lo necesario...")
+
+user_name = input("Por favor, introduzca su nombre: ").upper()
+
+time.sleep(0.5)
+print(f"Bienvenido {user_name}")
+
+check_list(user_name)
+
