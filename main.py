@@ -47,7 +47,7 @@ def new_profile(user_name):
     print("Vamos a crear un nuevo usuario: ")
     time.sleep(0.2)
 
-    open(f"{PATH}Password Manager/user/{user_name}_data.txt", "wb").close()
+    open(f"{PATH}Password Manager/user/{user_name}_DATA.txt", "wb").close()
 
     user = input("Nombre de Usuario: ")
     password_01 = input("Contraseña: ")
@@ -64,7 +64,7 @@ def new_profile(user_name):
 
             user_encrypt = data_encode(user + "|" + password_01)
 
-            with open(f"{PATH}Password Manager/user/{user_name}_data.txt", "ab") as data:
+            with open(f"{PATH}Password Manager/user/{user_name}_DATA.txt", "ab") as data:
                 data.write(user_encrypt)
 
             login(user_name)
@@ -78,7 +78,7 @@ def new_profile(user_name):
 
 def login(user_name):
     print(f"Bienvenido {user_name}")
-    load_user = f"{PATH}Password Manager/user/{user_name}_data.txt"
+    load_user = f"{PATH}Password Manager/user/{user_name}_DATA.txt"
     u_data = data_decode(load_user)
 
     count = 2
@@ -208,7 +208,17 @@ def uninstall():
 
 
 def check_list(user_name):
-    pass
+    with open(PATH + "Password Manager/files/user_list.txt", "r") as user_list:
+        u_list = user_list.read()
+        u_list = u_list.split("|")
+
+    if user_name.upper() in u_list:
+        print("¡Hola!")
+        login(user_name)
+
+    else:
+        print(f"Bienvenido {user_name}, parece que es su primera vez.")
+        new_profile(user_name)
 
 
 def new_file(name_file):
@@ -229,3 +239,9 @@ def delete_file(name_file):
 
 def generate_password():
     pass
+
+
+install()
+user = input("Su nombre: ").upper()
+check_list(user)
+
