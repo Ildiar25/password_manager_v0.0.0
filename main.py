@@ -13,6 +13,7 @@ import cryptography
 import os
 from config import PATH
 import stdiomask
+import getpass
 
 
 def new_profile():
@@ -25,4 +26,16 @@ def new_profile():
 
     print(user, password_01)
 
-new_profile()
+
+def new_profile_02():
+    print("Vamosa  crear un nuevo usuario y una contraseña:")
+    time.sleep(0.2)
+
+    user = input("Nombre de Usuario: ")
+    print("Usuario añadido")
+    password_01 = getpass.getpass("Contraseña: ")
+
+    print(user, password_01)
+
+
+new_profile_02()
