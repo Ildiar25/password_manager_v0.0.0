@@ -194,8 +194,9 @@ def uninstall():
 
             print("Limpiando sistema...")
             time.sleep(0.2)
-            print("Finalización Exitosa")
+
             os.rmdir("C:/Users/jpast/Desktop/temp_folder/Password Manager")
+            print("Finalización Exitosa")
             quit()
 
         elif answer == "N":
@@ -204,3 +205,27 @@ def uninstall():
         else:
             print(f"Lo siento, {answer} no es un comando válido.")
             continue
+
+
+def check_list(user_name):
+    pass
+
+
+def new_file(name_file):
+    pass
+
+
+def view_file(name_file):
+    pass
+
+
+def modify_file(name_file):
+    pass
+
+
+def delete_file(name_file):
+    pass
+
+
+def generate_password():
+    pass
