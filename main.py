@@ -212,7 +212,7 @@ def check_list(user_name):
         u_list = user_list.read()
         u_list = u_list.split("|")
 
-    if user_name.upper() in u_list:
+    if user_name in u_list:
         print("¡Hola!")
         login(user_name)
 
@@ -222,7 +222,32 @@ def check_list(user_name):
 
 
 def new_file(name_file):
-    pass
+    print(f"Creación del elemento {name_file} en la biblioteca.")
+    time.sleep(0.2)
+    open(f"{PATH}Password Manager/data/{name_file}.csv", "wb").close()
+
+    user = input("Nombre de Usuario: ")
+    password_01 = input("Contraseña: ")
+
+    while True:
+        password_02 = input("Repita la contraseña: ")
+
+        if password_02 == password_01:
+            print("Contraseña confirmada")
+            time.sleep(0.2)
+
+            user_encrypt = data_encode(user + "|" + password_01)
+
+            with open(f"{PATH}Password Manager/data/{name_file}.csv", "ab") as data:
+                data.write(user_encrypt)
+
+            print(f"{name_file} añadido a la biblioteca con éxito.")
+
+            break
+
+        else:
+            print("Lo siento, la contraseña no coincide.")
+            continue
 
 
 def view_file(name_file):
@@ -245,3 +270,4 @@ install()
 user = input("Su nombre: ").upper()
 check_list(user)
 
+new_file("Amazon")
