@@ -95,8 +95,7 @@ def check_list(name):
         u_list = u_list.split("|")
 
     if name in u_list:
-
-        # call login function
+        pass  # call login function
 
     else:
         print(f"Parece que es su primera vez. No hay problema")
@@ -121,4 +120,3 @@ time.sleep(0.5)
 print(f"Bienvenido {user_name}")
 
 check_list(user_name)
-
