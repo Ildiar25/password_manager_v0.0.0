@@ -224,7 +224,7 @@ def check_list(user_name):
 def new_file(name_file):
     print(f"Creación del elemento {name_file} en la biblioteca.")
     time.sleep(0.2)
-    open(f"{PATH}Password Manager/data/{name_file}.csv", "wb").close()
+    open(f"{PATH}Password Manager/data/{name_file}.db", "wb").close()
 
     user = input("Nombre de Usuario: ")
     password_01 = input("Contraseña: ")
@@ -238,7 +238,7 @@ def new_file(name_file):
 
             user_encrypt = data_encode(user + "|" + password_01)
 
-            with open(f"{PATH}Password Manager/data/{name_file}.csv", "ab") as data:
+            with open(f"{PATH}Password Manager/data/{name_file}.db", "ab") as data:
                 data.write(user_encrypt)
 
             print(f"{name_file} añadido a la biblioteca con éxito.")
