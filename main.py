@@ -11,10 +11,14 @@
 from cryptography.fernet import Fernet
 import os
 import time
+import sqlite3
 from config import PATH
 from config import BUILD
 
 name = "jpast"  # Wait! This name must be the same name used by computer user
+
+conexion = sqlite3.connect(PATH + "Password Manager/files/user_list.db")
+cursor = conexion.cursor()
 
 
 def generate_key():
@@ -266,8 +270,17 @@ def generate_password():
     pass
 
 
-install()
-user = input("Su nombre: ").upper()
-check_list(user)
+cursor.execute("""CREATE TABLE IF NOT EXISTS userdata(
+                id INTEGER PRIMARY KEY,
+                username VARCHAR(255) NOT NULL,
+                password VARCHAR(255) NOT NULL
+                )
+                """)
 
-new_file("Amazon")
+username1 = "John"
+password1 = "blablabla"
+
+
+cursor.execute("INSERT INTO userdata (username, password) VALUES (?, ?)", (username1, password1))
+
+conexion.commit()
