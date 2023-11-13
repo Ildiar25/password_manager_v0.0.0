@@ -170,7 +170,7 @@ def check_list(name):
         u_list = u_list.split("|")
 
     if name in u_list:
-        pass  # call login function
+        login(name)
 
     else:
         print(f"Parece que es su primera vez. No hay problema")
@@ -201,12 +201,39 @@ def new_profile(name):
             with open(f"{PATH}user/{name}_DATA.txt", "ab") as data:
                 data.write(user_encrypt)
 
-            # login(user_name)
+            login(name)
 
             break
 
         else:
             print("Lo siento, la contraseña no coincide.")
+            continue
+
+
+def login(name):
+    print("Inicie sesión rellenando los campos")
+    load_user = f"{PATH}user/{name}_DATA.txt"
+
+    u_data = data_decode(load_user)
+    u_data = u_data.split("|")
+
+    time.sleep(2)
+
+    for attempt in range(3):
+        user = input("Usuario: ")
+        password = input("Contraseña: ")
+
+        if user == u_data[0] and password == u_data[1]:
+            print("Bienvenido de nuevo!")
+            break
+
+        elif attempt == 2:
+            print("Demasiados intentos, se cerrará el programa.")
+            time.sleep(2)
+            quit()
+
+        else:
+            print("Usuario o contraseña no coinciden. Vuelva a intentarlo.")
             continue
 
 ######################## ------------------------------ PROGRAM ------------------------------ ########################
