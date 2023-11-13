@@ -59,9 +59,9 @@ def uninstall():
     print("Perderá cualquier información almacenada y no se podrá recuperar...")
 
     while True:
-        answer = input("Y/N: ").upper()
+        u_answer = input("Y/N: ").upper()
 
-        if answer == "Y":
+        if u_answer == "Y":
 
             print("Eliminando los archivos de sistema...")
             time.sleep(0.2)
@@ -118,11 +118,11 @@ def uninstall():
             print("Finalización Exitosa")
             quit()
 
-        elif answer == "N":
+        elif u_answer == "N":
             break
 
         else:
-            print(f"Lo siento, {answer} no es un comando válido.")
+            print(f"Lo siento, {u_answer} no es un comando válido.")
             continue
 
 
