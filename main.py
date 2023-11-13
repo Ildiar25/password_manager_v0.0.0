@@ -51,6 +51,80 @@ def install():
     print("Instalación completada.")
 
 
+def uninstall():
+    print("Ha seleccionado desinstalar.")
+    time.sleep(0.2)
+    print("¿Seguro que desea desinstalar el programa?")
+    print("Perderá cualquier información almacenada y no se podrá recuperar...")
+    while True:
+        answer = input("Y/N: ").upper()
+
+        if answer == "Y":
+            main_path = PATH
+
+            print("Eliminando los archivos de sistema...")
+            time.sleep(0.2)
+
+            data_folder = main_path + "data/"
+            files = os.listdir(data_folder)
+
+            for file in files:
+                print(file)
+                os.remove(data_folder + file)
+
+            time.sleep(0.2)
+            files_folder = main_path + "files/"
+            files = os.listdir(files_folder)
+
+            for file in files:
+                print(file)
+                os.remove(files_folder + file)
+
+            time.sleep(0.2)
+            user_folder = main_path + "user/"
+            files = os.listdir(user_folder)
+
+            for file in files:
+                print(file)
+                os.remove(user_folder + file)
+
+            time.sleep(0.2)
+
+            print("Eliminando codificación...")
+
+            print("key.key")
+            os.remove(main_path + "key.key")
+            time.sleep(0.2)
+
+            print("build.txt")
+            os.remove(main_path + "build.txt")
+            time.sleep(0.2)
+
+            print("Eliminando carpetas...")
+
+            folders = os.listdir(main_path)
+
+            for folder in folders:
+                print("Carpeta " + folder + " eliminada")
+                os.rmdir(main_path + folder)
+
+            time.sleep(0.2)
+
+            print("Limpiando sistema...")
+            time.sleep(0.2)
+
+            os.rmdir(f"C:/Users/{NAME}/Password Manager")
+            print("Finalización Exitosa")
+            quit()
+
+        elif answer == "N":
+            break
+
+        else:
+            print(f"Lo siento, {answer} no es un comando válido.")
+            continue
+
+
 # CODING FUNCTIONS ----
 
 
@@ -90,7 +164,7 @@ def data_decode(file):
 
 
 def check_list(name):
-    with open(PATH + "Password Manager/files/user_list.txt", "r") as user_list:
+    with open(PATH + "files/user_list.txt", "r") as user_list:
         u_list = user_list.read()
         u_list = u_list.split("|")
 
@@ -110,7 +184,21 @@ print("Realizando las comprobaciones necesarias...")
 time.sleep(2)
 
 if "Password Manager" not in content:
-    install()
+    while True:
+        print("El programa no se encuentra instalado, ¿desea hacerlo?")
+        answer = input("Y/N: ").upper()
+
+        if answer == "Y":
+            install()
+            break
+
+        elif answer == "N":
+            quit()
+
+        else:
+            print(f"Parece que {answer} no es un comando válido. Pruebe otra vez.")
+            continue
+
 else:
     print("Parece tiene todo lo necesario...")
 
