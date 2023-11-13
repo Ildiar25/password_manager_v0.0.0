@@ -220,7 +220,7 @@ def login(name):
     time.sleep(2)
 
     for attempt in range(3):
-        user = input("Usuario: ")
+        user = input("Nombre de usuario: ")
         password = input("Contraseña: ")
 
         if user == u_data[0] and password == u_data[1]:
@@ -237,6 +237,8 @@ def login(name):
             continue
 
 ######################## ------------------------------ PROGRAM ------------------------------ ########################
+
+# SARTING SYSTEM
 
 
 print("BIENVENIDO A PASSWORD MANAGER v0.0.0")
@@ -269,3 +271,6 @@ time.sleep(0.5)
 print(f"Bienvenido {user_name}")
 
 check_list(user_name)
+
+
+# MENU
