@@ -274,3 +274,74 @@ check_list(user_name)
 
 
 # MENU
+
+while True:
+    answer = input(f"MENÚ PRINCIPAL: {user_name}, qué desea hacer? ").upper()
+
+    if answer == "AÑADIR":
+        pass
+    elif answer == "MODIFICAR":
+        pass
+    elif answer == "VER":
+        pass
+    elif answer == "ELIMINAR":
+        pass
+    elif answer == "AYUDA":
+        print("Los comandos disponibles son:")
+        time.sleep(0.2)
+
+        print("AÑADIR: Añade nuevos datos a la base de datos")
+        print("MODIFICAR: Modifica los datos disponibles")
+        print("VER: Ver los datos almacenados")
+        print("ELIMINAR: Eliminar un dato en específico")
+        print("AYUDA: Muestra los comandos disponibles")
+        print("OPCIONES: Abre el menú de opciones")
+        print("SALIR: Sale del programa")
+
+    elif answer == "OPCIONES":
+        while True:
+            answer = input(f"MENÚ OPCIONES: Qué desea hacer? ").upper()
+
+            if answer == "USUARIO":
+                pass
+
+            elif answer == "DESINSTALAR":
+                uninstall()
+
+            elif answer == "LOGOUT":
+                print(f"Hasta luego {user_name}")
+                time.sleep(2)
+
+                print("Bienvenido!")
+                user_name = input("Por favor, introduzca su nombre: ").upper()
+
+                time.sleep(0.5)
+
+                check_list(user_name)
+                break
+
+            elif answer == "ATRÁS" or answer == "ATRAS":
+                break
+
+            elif answer == "AYUDA":
+                print("Los comandos disponibles son:")
+                time.sleep(0.2)
+
+                print("USUARIO: Modifica los datos del usuario")
+                print("DESINSTALAR: Elimina el programa y los datos almacenados")
+                print("LOGOUT: Cambiar de usuario")
+                print("ATRÁS: Volver al menú principal")
+                print("AYUDA: Muestra los comandos disponibles")
+
+            else:
+                print(f"Lo siento, {answer} no es un comando válido. Prueba otra vez")
+                continue
+
+    elif answer == "SALIR":
+        print(f"Hasta luego {user_name}")
+        time.sleep(2)
+        quit()
+
+    else:
+        print(f"Lo siento, {answer} no es un comando válido. Prueba otra vez")
+        continue
