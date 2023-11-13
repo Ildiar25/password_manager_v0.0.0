@@ -174,7 +174,40 @@ def check_list(name):
 
     else:
         print(f"Parece que es su primera vez. No hay problema")
-        # call new_profile function
+        new_profile(name)
+
+
+def new_profile(name):
+    print("Vamos a crear un nuevo usuario: ")
+    time.sleep(0.2)
+
+    open(f"{PATH}user/{name}_DATA.txt", "wb").close()
+
+    n_user = input("Nombre de Usuario: ")
+    password_01 = input("Contraseña: ")
+
+    while True:
+        password_02 = input("Repita la contraseña: ")
+
+        if password_02 == password_01:
+            print("Contraseña confirmada")
+            time.sleep(0.2)
+
+            with open(f"{PATH}files/user_list.txt", "a") as data:
+                data.write(name + "|")
+
+            user_encrypt = data_encode(n_user + "|" + password_01)
+
+            with open(f"{PATH}user/{name}_DATA.txt", "ab") as data:
+                data.write(user_encrypt)
+
+            # login(user_name)
+
+            break
+
+        else:
+            print("Lo siento, la contraseña no coincide.")
+            continue
 
 ######################## ------------------------------ PROGRAM ------------------------------ ########################
 
