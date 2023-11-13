@@ -54,18 +54,19 @@ def install():
 def uninstall():
     print("Ha seleccionado desinstalar.")
     time.sleep(0.2)
+
     print("¿Seguro que desea desinstalar el programa?")
     print("Perderá cualquier información almacenada y no se podrá recuperar...")
+
     while True:
         answer = input("Y/N: ").upper()
 
         if answer == "Y":
-            main_path = PATH
 
             print("Eliminando los archivos de sistema...")
             time.sleep(0.2)
 
-            data_folder = main_path + "data/"
+            data_folder = PATH + "data/"
             files = os.listdir(data_folder)
 
             for file in files:
@@ -73,7 +74,7 @@ def uninstall():
                 os.remove(data_folder + file)
 
             time.sleep(0.2)
-            files_folder = main_path + "files/"
+            files_folder = PATH + "files/"
             files = os.listdir(files_folder)
 
             for file in files:
@@ -81,7 +82,7 @@ def uninstall():
                 os.remove(files_folder + file)
 
             time.sleep(0.2)
-            user_folder = main_path + "user/"
+            user_folder = PATH + "user/"
             files = os.listdir(user_folder)
 
             for file in files:
@@ -93,20 +94,20 @@ def uninstall():
             print("Eliminando codificación...")
 
             print("key.key")
-            os.remove(main_path + "key.key")
+            os.remove(PATH + "key.key")
             time.sleep(0.2)
 
             print("build.txt")
-            os.remove(main_path + "build.txt")
+            os.remove(PATH + "build.txt")
             time.sleep(0.2)
 
             print("Eliminando carpetas...")
 
-            folders = os.listdir(main_path)
+            folders = os.listdir(PATH)
 
             for folder in folders:
                 print("Carpeta " + folder + " eliminada")
-                os.rmdir(main_path + folder)
+                os.rmdir(PATH + folder)
 
             time.sleep(0.2)
 
