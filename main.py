@@ -14,7 +14,7 @@ import time
 from config import PATH
 from config import BUILD
 
-name = "jpast"  # Wait! This name must be the same name used by computer user
+name = "Joan"  # Wait! This name must be the same name used by computer user
 
 
 def generate_key():
@@ -224,7 +224,7 @@ def check_list(user_name):
 def new_file(name_file):
     print(f"Creación del elemento {name_file} en la biblioteca.")
     time.sleep(0.2)
-    open(f"{PATH}Password Manager/data/{name_file}.db", "wb").close()
+    open(f"{PATH}Password Manager/data/{name_file}.txt", "wb").close()
 
     user = input("Nombre de Usuario: ")
     password_01 = input("Contraseña: ")
@@ -238,7 +238,7 @@ def new_file(name_file):
 
             user_encrypt = data_encode(user + "|" + password_01)
 
-            with open(f"{PATH}Password Manager/data/{name_file}.db", "ab") as data:
+            with open(f"{PATH}Password Manager/data/{name_file}.txt", "ab") as data:
                 data.write(user_encrypt)
 
             print(f"{name_file} añadido a la biblioteca con éxito.")
@@ -250,12 +250,97 @@ def new_file(name_file):
             continue
 
 
-def view_file(name_file):
-    pass
+def view_file():
+    content = os.listdir(PATH + "Password Manager/data")
+    lista_temp = []
+
+    for element in content:
+        name = element.split(".")
+        lista_temp.append(name[0])
+
+    print(lista_temp)
+
+    while True:
+        print("¿Qué datos desea ver?")
+        answer = input().upper()
+
+        if answer in lista_temp:
+            load_data = f"{PATH}Password Manager/data/{answer}.txt"
+            l_data = data_decode(load_data)
+            l_data = l_data.split("|")
+            print("Usuario:", l_data[0])
+            print("Contraseña:", l_data[1])
+
+        elif answer == "ATRÁS" or answer == "ATRAS":
+            break
+
+        else:
+            print(f"Lo siento, {answer} no se encuentra en la lista de archivos almacenados.")
+            continue
 
 
-def modify_file(name_file):
-    pass
+def modify_file():
+    content = os.listdir(PATH + "Password Manager/data")
+    lista_temp = []
+
+    for element in content:
+        name = element.split(".")
+        lista_temp.append(name[0])
+
+    while True:
+        print("Qué archivo desea modificar?")
+        file = input().upper()
+
+        if file in lista_temp:
+            load_data = f"{PATH}Password Manager/data/{file}.txt"
+            l_data = data_decode(load_data)
+            l_data = l_data.split("|")
+            print("Usuario:", l_data[0])
+            print("Contraseña:", l_data[1])
+
+            while True:
+                print("¿Qué desea modificar?")
+                answer = input().upper()
+
+                if answer == "USUARIO":
+                    print("Introduzca el nuevo nombre de usuario:")
+                    l_data[0] = input()
+
+                    final_data = "|".join(l_data)
+
+                    new_user = data_encode(final_data)
+
+                    with open(f"{PATH}Password Manager/data/{file}.txt", "wb") as new_file:
+                        new_file.write(new_user)
+
+                    break
+
+                elif answer == "CONTRASEÑA":
+                    print("Introduzca la nueva contraseña:")
+                    l_data[1] = input()
+
+                    final_data = "|".join(l_data)
+
+                    new_password = data_encode(final_data)
+
+                    with open(f"{PATH}Password Manager/data/{file}.txt", "wb") as new_file:
+                        new_file.write(new_password)
+
+                    break
+
+                elif answer == "ATRÁS" or answer == "ATRAS":
+                    break
+
+                else:
+                    print(f"Lo siento, {answer} no es un comando válido.")
+                    continue
+
+        elif file == "ATRÁS" or file == "ATRAS":
+            break
+
+        else:
+            print(f"Lo siento, {file} no se encuentra en la lista de archivos almacenados.")
+            continue
 
 
 def delete_file(name_file):
@@ -266,8 +351,10 @@ def generate_password():
     pass
 
 
-install()
-user = input("Su nombre: ").upper()
-check_list(user)
+# user = input("Su nombre: ").upper()
+# check_list(user)
 
-new_file("Amazon")
+# new_file("FACEBOOK")
+
+# view_file()
+# modify_file()
