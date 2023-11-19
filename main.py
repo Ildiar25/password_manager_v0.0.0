@@ -142,7 +142,7 @@ def uninstall():
         answer = input("Y/N: ").upper()
 
         if answer == "Y":
-            main_path = "C:/Users/jpast/Desktop/temp_folder/Password Manager/"
+            main_path = f"{PATH}Password Manager/"
 
             print("Eliminando los archivos de sistema...")
             time.sleep(0.2)
@@ -195,7 +195,7 @@ def uninstall():
             print("Limpiando sistema...")
             time.sleep(0.2)
 
-            os.rmdir("C:/Users/jpast/Desktop/temp_folder/Password Manager")
+            os.rmdir(f"{PATH}Password Manager")
             print("Finalización Exitosa")
             quit()
 
@@ -343,8 +343,8 @@ def modify_file():
             continue
 
 
-def delete_file(name_file):
-    pass
+def delete_file():
+    pass  # print("Which file do you want to erase?")
 
 
 def generate_password():
