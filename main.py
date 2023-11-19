@@ -344,7 +344,47 @@ def modify_file():
 
 
 def delete_file():
-    pass  # print("Which file do you want to erase?")
+    content = os.listdir(PATH + "Password Manager/data")
+    lista_temp = []
+
+    for element in content:
+        name = element.split(".")
+        lista_temp.append(name[0])
+
+    while True:
+        print("Ha seleccionado eliminar. ¿Que archivo desea eliminar de la lista siguiente?")
+        print(lista_temp)
+        file = input().upper()
+
+        if file in lista_temp:
+
+            print(f"Ha seleccionado eliminar {file}. ¿Desea proceder? Esta acción no se puede deshacer.")
+            while True:
+
+                answer = input("Y/N: ").upper()
+
+                if answer == "Y":
+                    print(f"{file} eliminado.")
+                    os.remove(PATH + f"Password Manager/data/{file}.txt")
+                    break
+
+                elif answer == "N":
+                    print("De acuerdo.")
+                    break
+
+                elif answer == "ATRÁS" or answer == "ATRAS":
+                    break
+
+                else:
+                    print(f"Lo siento, {answer} no es un comando válido.")
+                    continue
+
+        elif file == "ATRÁS" or file == "ATRAS":
+            break
+
+        else:
+            print(f"Lo siento, {file} no tiene un archivo asociado.")
+            continue
 
 
 def generate_password():
@@ -354,7 +394,7 @@ def generate_password():
 # user = input("Su nombre: ").upper()
 # check_list(user)
 
-# new_file("FACEBOOK")
-
+# new_file("NESPRESSO")
 # view_file()
+# delete_file()
 # modify_file()
