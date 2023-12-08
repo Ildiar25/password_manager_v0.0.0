@@ -22,4 +22,9 @@ If a new user registers on platform there isn't a problem, but when the new user
 This problem it could be solved by add a database file linked to each user registered so, this time I'll try to work with SQLite language and libraries.
 
 I think the best way is to have two libraries. One of them for user data where I'll keep all new users and its passwords (this library advice to you if the name's user is registered too).
-The other one will be linked to each user and it will keep all user passwords.
+The other one will be linked to each user, and it will keep all user passwords.
+
+## New Horizons
+I was looking for some information and other examples about password enconding, databases and class objects (yes, after all, I don't know how to OOP yet).
+I've arrived to a new conclussion: I need to start a new program with the new information I have. Doing it this way is easier than the previous method because change all functions and program flow probably make new errors.
+I'm so excited to start the new version of this Manager Password: adding a main database, password maskaraded, and a class method. Wish me luck! 
